@@ -120,4 +120,13 @@ public class Address implements Serializable {
 		return listingDetail;
 	}
 
+	@Override
+	public String toString() {
+		return "Address [id=" + id + ", aptSuite=" + aptSuite + ", city=" + city + ", houseNumber=" + houseNumber
+				+ ", state=" + state + ", street=" + street + ", zip=" + zip + ", listingDetails=" + listingDetails
+				+ "]";
+	}
+
+	
+	
 }
