@@ -4,31 +4,29 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
 
-
 /**
  * The persistent class for the realtor database table.
  * 
  */
 @Entity
-@NamedQuery(name="Realtor.findAll", query="SELECT r FROM Realtor r")
+@NamedQuery(name = "Realtor.findAll", query = "SELECT r FROM Realtor r")
 public class Realtor implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
-	@Column(name="description")
+	@Column(name = "description")
 	private String description;
-	
-	@Column(name="name")
+
+	@Column(name = "name")
 	private String name;
 
-	@Column(name="picture_url")
-	private String pictureUrl;
+	@Lob
+	private byte[] picture;
 
-	//bi-directional many-to-one association to ListingDetail
-	@OneToMany(mappedBy="realtor")
+	// bi-directional many-to-one association to ListingDetail
+	@OneToMany(mappedBy = "realtor")
 	private List<ListingDetail> listingDetails;
 
 	public Realtor() {
@@ -58,12 +56,12 @@ public class Realtor implements Serializable {
 		this.name = name;
 	}
 
-	public String getPictureUrl() {
-		return this.pictureUrl;
+	public byte[] getPicture() {
+		return this.picture;
 	}
 
-	public void setPictureUrl(String pictureUrl) {
-		this.pictureUrl = pictureUrl;
+	public void setPicture(byte[] picture) {
+		this.picture = picture;
 	}
 
 	public List<ListingDetail> getListingDetails() {

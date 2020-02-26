@@ -4,40 +4,39 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
 
-
 /**
  * The persistent class for the address database table.
  * 
  */
 @Entity
-@NamedQuery(name="Address.findAll", query="SELECT a FROM Address a")
+@NamedQuery(name = "Address.findAll", query = "SELECT a FROM Address a")
 public class Address implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	@Column(name="apt_suite")
+	@Column(name = "apt_suite")
 	private String aptSuite;
-	
-	@Column(name="city")
+
+	@Column(name = "city")
 	private String city;
 
-	@Column(name="house_number")
+	@Column(name = "house_number")
 	private int houseNumber;
 
-	@Column(name="state")
+	@Column(name = "state")
 	private String state;
-	
-	@Column(name="street")
+
+	@Column(name = "street")
 	private String street;
-	
-	@Column(name="zip")
+
+	@Column(name = "zip")
 	private int zip;
 
-	//bi-directional many-to-one association to ListingDetail
-	@OneToMany(mappedBy="address")
+	// bi-directional many-to-one association to ListingDetail
+	@OneToMany(mappedBy = "address")
 	private List<ListingDetail> listingDetails;
 
 	public Address() {

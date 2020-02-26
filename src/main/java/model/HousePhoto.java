@@ -20,12 +20,12 @@ public class HousePhoto implements Serializable {
 
 	@Column(name="is_default")
 	private byte isDefault;
-	
-	@Column(name="url")
-	private String url;
+
+	@Lob
+	private byte[] photo;
 
 	//bi-directional many-to-one association to ListingDetail
-	@ManyToOne
+	@ManyToOne(cascade={CascadeType.MERGE})
 	@JoinColumn(name="listing_id")
 	private ListingDetail listingDetail;
 
@@ -48,12 +48,12 @@ public class HousePhoto implements Serializable {
 		this.isDefault = isDefault;
 	}
 
-	public String getUrl() {
-		return this.url;
+	public byte[] getPhoto() {
+		return this.photo;
 	}
 
-	public void setUrl(String url) {
-		this.url = url;
+	public void setPhoto(byte[] photo) {
+		this.photo = photo;
 	}
 
 	public ListingDetail getListingDetail() {

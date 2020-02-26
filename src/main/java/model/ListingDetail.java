@@ -32,7 +32,7 @@ public class ListingDetail implements Serializable {
 	private int price;
 
 	//bi-directional many-to-one association to HousePhoto
-	@OneToMany(mappedBy="listingDetail")
+	@OneToMany(mappedBy="listingDetail", cascade={CascadeType.MERGE})
 	private List<HousePhoto> housePhotos;
 
 	//bi-directional many-to-one association to Address
