@@ -19,7 +19,7 @@ public class HousePhoto implements Serializable {
 	private int id;
 
 	@Column(name="is_default")
-	private byte isDefault;
+	private boolean isDefault;
 
 	@Lob
 	private byte[] photo;
@@ -40,11 +40,11 @@ public class HousePhoto implements Serializable {
 		this.id = id;
 	}
 
-	public byte getIsDefault() {
+	public boolean getIsDefault() {
 		return this.isDefault;
 	}
 
-	public void setIsDefault(byte isDefault) {
+	public void setIsDefault(boolean isDefault) {
 		this.isDefault = isDefault;
 	}
 
