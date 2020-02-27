@@ -12,6 +12,9 @@
 <title>Add</title>
 <link
 	rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link
+	rel="stylesheet"
 	href="base.css" />
 <link
 	rel="stylesheet"
@@ -23,16 +26,13 @@
 		<div class="box">
 			<c:choose>
 				<c:when test="${param.type == 'realtor'}">
-					<h1 class="title">Add Employer</h1>
+					<h1 class="title">Add Realtor</h1>
 					<form
 						action="addServlet?type=realtor"
 						class="form-horizontal"
+						method="post"
 						enctype="multipart/form-data">
 						<jsp:include page="realtor-form.jsp" />
-						<input
-							type="hidden"
-							name="id"
-							value="${toEdit.id }" />
 					</form>
 				</c:when>
 				<c:when test="${param.type == 'listing'}">
@@ -41,11 +41,8 @@
 						method="post"
 						action="addServlet?type=job"
 						class="form-horizontal">
-						<jsp:include page="jobForm.jsp" />
-						<input
-							type="hidden"
-							name="id"
-							value="${toEdit.id }" />
+						<jsp:include page="address-form.jsp" />
+						<jsp:include page="listing-form.jsp" />
 					</form>
 				</c:when>
 			</c:choose>
