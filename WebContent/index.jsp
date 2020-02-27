@@ -17,6 +17,5 @@
 </head>
 <body>
 	<jsp:include page="header.html" />
-
 </body>
 </html>

@@ -37,6 +37,7 @@ public class AddServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		String type = request.getParameter("type");
 
 		if (type.equals("realtor")) {
@@ -44,7 +45,6 @@ public class AddServlet extends HttpServlet {
 			Realtor r = new Realtor();
 			String name = request.getParameter("name");
 			String description = request.getParameter("description");
-			
 			
 			Part filePart = request.getPart("photo");
 			InputStream fileContent = filePart.getInputStream();
