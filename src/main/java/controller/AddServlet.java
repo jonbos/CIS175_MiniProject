@@ -13,6 +13,8 @@ import javax.servlet.http.Part;
 
 import org.apache.commons.io.IOUtils;
 
+import model.Address;
+import model.ListingDetail;
 import model.Realtor;
 
 /**
@@ -37,25 +39,60 @@ public class AddServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
 		String type = request.getParameter("type");
+		String path = "/index.jsp";
 
 		if (type.equals("realtor")) {
 			RealtorDAO realtorDAO = new RealtorDAO();
 			Realtor r = new Realtor();
 			String name = request.getParameter("name");
 			String description = request.getParameter("description");
-			
+
 			Part filePart = request.getPart("photo");
 			InputStream fileContent = filePart.getInputStream();
 			byte[] picture = IOUtils.toByteArray(fileContent);
 			r.setDescription(description);
 			r.setName(name);
 			r.setPicture(picture);
-			
+
 			realtorDAO.insert(r);
-			
+
 			request.getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+		} else if (type.equals("listing")) {
+			ListingDetailDAO listingDAO = new ListingDetailDAO();
+			ListingDetail ld = new ListingDetail();
+
+			int houseNum = Integer.parseInt(request.getParameter("house_num"));
+			String aptSuite = request.getParameter("apt_suite");
+			String street = request.getParameter("street");
+			String city = request.getParameter("city");
+			String state = request.getParameter("state");
+			int zip = Integer.parseInt(request.getParameter("zip"));
+
+			Address addr = new Address();
+			addr.setHouseNumber(houseNum);
+			addr.setAptSuite(aptSuite);
+			addr.setCity(city);
+			addr.setState(state);
+			addr.setZip(zip);
+
+			int askingPrice = Integer.parseInt(request.getParameter("price"));
+			float numBedrooms = Float.parseFloat(request.getParameter("num_beds"));
+			float numBaths = Float.parseFloat(request.getParameter("num_baths"));
+			int realtorId = Integer.parseInt(request.getParameter("listing_agent"));
+			String descrition = request.getParameter("description");
+			RealtorDAO realtorDAO = new RealtorDAO();
+			Realtor r = realtorDAO.get(realtorId);
+
+			ld.setAddress(addr);
+			ld.setPrice(askingPrice);
+			ld.setNumBaths(numBaths);
+			ld.setNumBedrooms(numBedrooms);
+			ld.setRealtor(r);
+			listingDAO.insert(ld);
+
 		}
+		request.getServletContext().getRequestDispatcher(path).forward(request, response);
 	}
 }

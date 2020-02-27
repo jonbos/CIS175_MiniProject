@@ -1,14 +1,11 @@
-<form class="form-horizontal" >
+ <form class="form-horizontal" >
 <fieldset>
-
-<!-- Form Name -->
-<legend>Address Form</legend>
 
 <!-- Text input-->
 <div class="field">
-  <label class="label" for="house_no">House Number</label>
+  <label class="label" for="house_num">House Number</label>
   <div class="control">
-    <input id="house_no" name="house_no" type="text" class="input " required="">
+    <input id="house_num" name="house_num" type="text" class="input " required="">
     
   </div>
 </div>
@@ -27,7 +24,6 @@
   <label class="label" for="street">Street</label>
   <div class="control">
     <input id="street" name="street" type="text" class="input " required="">
-    
   </div>
 </div>
 
@@ -59,4 +55,3 @@
 </div>
 
 </fieldset>
-</form>
