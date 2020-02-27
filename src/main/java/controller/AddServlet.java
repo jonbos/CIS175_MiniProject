@@ -69,9 +69,10 @@ public class AddServlet extends HttpServlet {
 			String city = request.getParameter("city");
 			String state = request.getParameter("state");
 			int zip = Integer.parseInt(request.getParameter("zip"));
-
+			String description = request.getParameter("description");
 			Address addr = new Address();
 			addr.setHouseNumber(houseNum);
+			addr.setStreet(street);
 			addr.setAptSuite(aptSuite);
 			addr.setCity(city);
 			addr.setState(state);
@@ -90,6 +91,7 @@ public class AddServlet extends HttpServlet {
 			ld.setNumBaths(numBaths);
 			ld.setNumBedrooms(numBedrooms);
 			ld.setRealtor(r);
+			ld.setDescription(description);
 			listingDAO.insert(ld);
 
 		}

@@ -24,12 +24,12 @@
 					<h1 class="title">Viewing All Realtors</h1>
 
 					<jsp:useBean
-						id="dao"
+						id="realtorDAO"
 						class="controller.RealtorDAO" />
 					<div class="columns is-multiline">
 						<c:forEach
 							var="realtor"
-							items="${dao.getAll()}">
+							items="${realtorDAO.getAll()}">
 							<div class="column is-one-third">
 								<div class="card">
 									<div class="card-image">
@@ -42,12 +42,16 @@
 									<div class="card-content">
 										<div class="media">
 											<div class="media-content">
-												<p class="title is-4"> <a href="#"><c:out value="${realtor.name }"/></a> </p>
+												<p class="title is-4">
+													<a href="#"><c:out value="${realtor.name }" /></a>
+												</p>
 											</div>
 										</div>
 
 										<div class="content">
-											<p><c:out value="${realtor.description }"/> </p>
+											<p>
+												<c:out value="${realtor.description }" />
+											</p>
 										</div>
 									</div>
 								</div>
@@ -57,6 +61,47 @@
 				</c:when>
 				<c:when test="${param.type == 'listing'}">
 					<h1 class="title">Viewing All Listings</h1>
+					<jsp:useBean
+						id="listingDetailDAO"
+						class="controller.ListingDetailDAO" />
+					<div class="columns is-multiline">
+						<c:forEach
+							var="listing"
+							items="${listingDetailDAO.getAll()}">
+							<div class="column is-one-third">
+								<div class="card">
+									<div class="card-image">
+										<figure class="image is-4by3">
+											<img
+												src="imageServlet?type=listing&id=${listing.id }"
+												alt="Placeholder image">
+										</figure>
+									</div>
+									<div class="card-content">
+										<div class="media">
+											<div class="media-content">
+												<p class="title is-4">
+													<a href="#"><c:out
+															value="${listing.address.getHouseNumberAndStreet() }" /></a>
+
+												</p>
+												<p class="subtitle is-6">
+													<c:out
+														value="${listing.address.city }, ${listing.address.state }" />
+												</p>
+											</div>
+										</div>
+
+										<div class="content">
+											<p>
+												<c:out value="${realtor.description }" />
+											</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</c:forEach>
+					</div>
 				</c:when>
 			</c:choose>
 		</div>
