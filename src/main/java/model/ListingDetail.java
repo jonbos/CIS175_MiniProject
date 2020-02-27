@@ -32,11 +32,11 @@ public class ListingDetail implements Serializable {
 	private int price;
 
 	//bi-directional many-to-one association to HousePhoto
-	@OneToMany(mappedBy="listingDetail", cascade={CascadeType.MERGE})
+	@OneToMany(mappedBy="listingDetail", cascade={CascadeType.ALL})
 	private List<HousePhoto> housePhotos;
 
 	//bi-directional many-to-one association to Address
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="adress_id")
 	private Address address;
 

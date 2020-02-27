@@ -30,8 +30,15 @@ public class ImageServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		Integer id = Integer.parseInt(request.getParameter("id"));
-		HousePhotoDAO photoDAO = new HousePhotoDAO();
-		byte[] img = photoDAO.get(id).getPhoto();
+		String type = request.getParameter("type");
+		byte[] img = null;
+		if (type.contentEquals("listing")) {
+			HousePhotoDAO photoDAO = new HousePhotoDAO();
+			img = photoDAO.get(id).getPhoto();
+		} else if (type.contentEquals("realtor")) {
+			RealtorDAO realtorDAO = new RealtorDAO();
+			img = realtorDAO.get(id).getPicture();
+		}
 		response.reset();
 		response.setContentType("image/jpg");
 		response.getOutputStream().write(img, 0, img.length);

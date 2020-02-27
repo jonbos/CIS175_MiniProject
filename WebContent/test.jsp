@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<img alt="" src="imageServlet?id=1">
+	<img alt="" src="imageServlet?id=1&type=realtor">
 </body>
 </html>

@@ -126,7 +126,10 @@ public class Address implements Serializable {
 				+ ", state=" + state + ", street=" + street + ", zip=" + zip + ", listingDetails=" + listingDetails
 				+ "]";
 	}
-
+	
+	public String getHouseNumberAndStreet() {
+		return this.houseNumber + " " + this.street;
+	}
 	
 	
 }
