@@ -5,6 +5,9 @@
 <%@ taglib
 	prefix="c"
 	uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib
+	prefix="fmt"
+	uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html>
@@ -88,6 +91,11 @@
 												<p class="subtitle is-6">
 													<c:out
 														value="${listing.address.city }, ${listing.address.state }" />
+														<br/>
+													<fmt:setLocale value="en_US" />
+													<fmt:formatNumber
+														value="${listing.price}"
+														type="currency" />
 												</p>
 											</div>
 										</div>
