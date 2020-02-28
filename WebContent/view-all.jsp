@@ -43,7 +43,8 @@
 										<div class="media">
 											<div class="media-content">
 												<p class="title is-4">
-													<a href="#"><c:out value="${realtor.name }" /></a>
+													<!-- Just passing the data already here to the next page thru the url -->
+													<a href="view-realtor-details.jsp?realtor=${realtor.id}&name=${realtor.name }&descr=${realtor.description }"><c:out value="${realtor.name }" /></a>
 												</p>
 											</div>
 										</div>
