@@ -5,6 +5,9 @@
 <%@ taglib
 	prefix="c"
 	uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib
+	prefix="fmt"
+	uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html>
@@ -43,7 +46,7 @@
 										<div class="media">
 											<div class="media-content">
 												<p class="title is-4">
-													<!-- Just passing the data already here to the next page thru the url -->
+													<!-- Just passing the data already here to the next page -->
 													<a href="view-realtor-details.jsp?realtor=${realtor.id}&name=${realtor.name }&descr=${realtor.description }"><c:out value="${realtor.name }" /></a>
 												</p>
 											</div>
@@ -89,6 +92,11 @@
 												<p class="subtitle is-6">
 													<c:out
 														value="${listing.address.city }, ${listing.address.state }" />
+														<br/>
+													<fmt:setLocale value="en_US" />
+													<fmt:formatNumber
+														value="${listing.price}"
+														type="currency" />
 												</p>
 											</div>
 										</div>
