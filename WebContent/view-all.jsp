@@ -85,7 +85,8 @@
 										<div class="media">
 											<div class="media-content">
 												<p class="title is-4">
-													<a href="#"><c:out
+													<!-- Just passing the data already here to the next page -->
+													<a href="view-listing-details.jsp?listing_id=${listing.id }&address=${listing.address.getHouseNumberAndStreet() }&city=${listing.address.city }&state=${listing.address.state }&price=${listing.price}&descr=${realtor.description }"><c:out
 															value="${listing.address.getHouseNumberAndStreet() }" /></a>
 
 												</p>
