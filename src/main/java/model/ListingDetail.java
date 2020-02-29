@@ -2,7 +2,6 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.util.List;
 
 
 /**
@@ -18,8 +17,7 @@ public class ListingDetail implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	
-	@Column(name="description")
+
 	private String description;
 
 	@Column(name="num_baths")
@@ -27,16 +25,14 @@ public class ListingDetail implements Serializable {
 
 	@Column(name="num_bedrooms")
 	private float numBedrooms;
-	
-	@Column(name="price")
+
+	@Lob
+	private byte[] photo;
+
 	private int price;
 
-	//bi-directional many-to-one association to HousePhoto
-	@OneToMany(mappedBy="listingDetail", cascade={CascadeType.ALL})
-	private List<HousePhoto> housePhotos;
-
 	//bi-directional many-to-one association to Address
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name="adress_id")
 	private Address address;
 
@@ -79,34 +75,20 @@ public class ListingDetail implements Serializable {
 		this.numBedrooms = numBedrooms;
 	}
 
+	public byte[] getPhoto() {
+		return this.photo;
+	}
+
+	public void setPhoto(byte[] photo) {
+		this.photo = photo;
+	}
+
 	public int getPrice() {
 		return this.price;
 	}
 
 	public void setPrice(int price) {
 		this.price = price;
-	}
-
-	public List<HousePhoto> getHousePhotos() {
-		return this.housePhotos;
-	}
-
-	public void setHousePhotos(List<HousePhoto> housePhotos) {
-		this.housePhotos = housePhotos;
-	}
-
-	public HousePhoto addHousePhoto(HousePhoto housePhoto) {
-		getHousePhotos().add(housePhoto);
-		housePhoto.setListingDetail(this);
-
-		return housePhoto;
-	}
-
-	public HousePhoto removeHousePhoto(HousePhoto housePhoto) {
-		getHousePhotos().remove(housePhoto);
-		housePhoto.setListingDetail(null);
-
-		return housePhoto;
 	}
 
 	public Address getAddress() {

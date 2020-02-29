@@ -69,7 +69,6 @@ public class AddServlet extends HttpServlet {
 			String city = request.getParameter("city");
 			String state = request.getParameter("state");
 			int zip = Integer.parseInt(request.getParameter("zip"));
-			String description = request.getParameter("description");
 			Address addr = new Address();
 			addr.setHouseNumber(houseNum);
 			addr.setStreet(street);
@@ -82,7 +81,14 @@ public class AddServlet extends HttpServlet {
 			float numBedrooms = Float.parseFloat(request.getParameter("num_beds"));
 			float numBaths = Float.parseFloat(request.getParameter("num_baths"));
 			int realtorId = Integer.parseInt(request.getParameter("listing_agent"));
-			String descrition = request.getParameter("description");
+			String description = request.getParameter("description");
+			
+			Part filePart = request.getPart("photo");
+			InputStream fileContent = filePart.getInputStream();
+			byte[] picture = IOUtils.toByteArray(fileContent);
+			
+			ld.setPhoto(picture);
+
 			RealtorDAO realtorDAO = new RealtorDAO();
 			Realtor r = realtorDAO.get(realtorId);
 
