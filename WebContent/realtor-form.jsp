@@ -2,6 +2,10 @@
 	language="java"
 	contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib
+	prefix="c"
+	uri="http://java.sun.com/jsp/jstl/core"%>
+
 <fieldset>
 
 	<!-- Text input-->
@@ -15,7 +19,9 @@
 				name="name"
 				type="text"
 				class="input "
-				required="">
+				placeholder="<c:out value="${empty toEdit ? 'Name' : ''}" />"
+				value="<c:out value='${empty toEdit ? "" : toEdit.name }' />"
+				required>
 
 		</div>
 	</div>
@@ -29,7 +35,9 @@
 			<textarea
 				class="textarea"
 				id="description"
-				name="description"></textarea>
+				name="description"
+				placeholder="<c:out value="${empty toEdit ? 'Realtor Description' : ''}" />"><c:out
+					value="${empty toEdit ? '' : toEdit.description }" /></textarea>
 		</div>
 	</div>
 
@@ -38,6 +46,17 @@
 	<label
 		class="label"
 		for="photo">Photo</label>
+	<c:choose>
+		<c:when test="${!empty toEdit }">
+			<figure class="image is-128x128">
+				<!-- pass the the url data back to the servlet for the image -->
+				<img
+					src="imageServlet?type=realtor&id=${param.id }"
+					alt="${param.name }"
+					title="${param.name }">
+			</figure>
+		</c:when>
+	</c:choose>
 	<div class="file">
 		<label class="file-label"> <input
 			class="file-input"
@@ -52,7 +71,7 @@
 		</span>
 		</label>
 	</div>
-	
+
 	<!-- Button -->
 	<div class="field">
 		<label
