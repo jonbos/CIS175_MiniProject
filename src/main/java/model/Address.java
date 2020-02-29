@@ -20,19 +20,15 @@ public class Address implements Serializable {
 	@Column(name = "apt_suite")
 	private String aptSuite;
 
-	@Column(name = "city")
 	private String city;
 
 	@Column(name = "house_number")
 	private int houseNumber;
 
-	@Column(name = "state")
 	private String state;
 
-	@Column(name = "street")
 	private String street;
 
-	@Column(name = "zip")
 	private int zip;
 
 	// bi-directional many-to-one association to ListingDetail
@@ -120,16 +116,8 @@ public class Address implements Serializable {
 		return listingDetail;
 	}
 
-	@Override
-	public String toString() {
-		return "Address [id=" + id + ", aptSuite=" + aptSuite + ", city=" + city + ", houseNumber=" + houseNumber
-				+ ", state=" + state + ", street=" + street + ", zip=" + zip + ", listingDetails=" + listingDetails
-				+ "]";
-	}
-	
 	public String getHouseNumberAndStreet() {
 		return this.houseNumber + " " + this.street;
 	}
-	
-	
+
 }

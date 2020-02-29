@@ -8,7 +8,6 @@ import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
 import model.Address;
-import model.HousePhoto;
 
 public class AddressDAO implements DAO<Address> {
 	static EntityManagerFactory emf = Persistence.createEntityManagerFactory("CIS175_MiniProject");

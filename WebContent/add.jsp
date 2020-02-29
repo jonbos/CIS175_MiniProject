@@ -40,7 +40,8 @@
 					<form
 						method="post"
 						action="addServlet?type=listing"
-						class="form-horizontal">
+						class="form-horizontal"
+						enctype="multipart/form-data">
 						<label class="label">Address</label>
 						<div class="box">
 							<jsp:include page="address-form.jsp" />

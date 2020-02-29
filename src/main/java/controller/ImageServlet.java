@@ -33,8 +33,8 @@ public class ImageServlet extends HttpServlet {
 		String type = request.getParameter("type");
 		byte[] img = null;
 		if (type.contentEquals("listing")) {
-			HousePhotoDAO photoDAO = new HousePhotoDAO();
-			img = photoDAO.get(id).getPhoto();
+			ListingDetailDAO listingDAO = new ListingDetailDAO();
+			img = listingDAO.get(id).getPhoto();
 		} else if (type.contentEquals("realtor")) {
 			RealtorDAO realtorDAO = new RealtorDAO();
 			img = realtorDAO.get(id).getPicture();
