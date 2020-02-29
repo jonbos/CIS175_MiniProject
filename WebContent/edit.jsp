@@ -34,6 +34,7 @@
 					</h1>
 					<form
 						method="post"
+						enctype="multipart/form-data"
 						action="editServlet?type=realtor&id=${param.id }">
 						<jsp:include page="realtor-form.jsp" />
 					</form>
