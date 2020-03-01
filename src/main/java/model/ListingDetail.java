@@ -1,7 +1,15 @@
 package model;
 
 import java.io.Serializable;
+
+
+import java.util.Date;
+
 import javax.persistence.*;
+
+
+import org.hibernate.annotations.CreationTimestamp;
+
 
 
 /**
@@ -13,6 +21,11 @@ import javax.persistence.*;
 @NamedQuery(name="ListingDetail.findAll", query="SELECT l FROM ListingDetail l")
 public class ListingDetail implements Serializable {
 	private static final long serialVersionUID = 1L;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "create_date", updatable = false)
+	@CreationTimestamp
+	private Date created;
+
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -39,7 +52,8 @@ public class ListingDetail implements Serializable {
 	//bi-directional many-to-one association to Realtor
 	@ManyToOne
 	private Realtor realtor;
-
+	
+	
 	public ListingDetail() {
 	}
 
@@ -106,5 +120,13 @@ public class ListingDetail implements Serializable {
 	public void setRealtor(Realtor realtor) {
 		this.realtor = realtor;
 	}
+	
+
+	
+	@PrePersist
+	protected void onCreate() {
+		created = new Date();
+	}
+
 
 }
