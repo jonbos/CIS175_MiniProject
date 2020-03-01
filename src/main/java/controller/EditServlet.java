@@ -13,6 +13,8 @@ import javax.servlet.http.Part;
 
 import org.apache.commons.io.IOUtils;
 
+import model.Address;
+import model.ListingDetail;
 import model.Realtor;
 
 /**
@@ -59,9 +61,9 @@ public class EditServlet extends HttpServlet {
 			String description = request.getParameter("description");
 
 			Part filePart = request.getPart("photo");
+			InputStream fileContent = filePart.getInputStream();
 
-			if (!(filePart == null)) {
-				InputStream fileContent = filePart.getInputStream();
+			if (fileContent.available() > 0) {
 				byte[] picture = IOUtils.toByteArray(fileContent);
 				realtor.setPicture(picture);
 			}
@@ -69,7 +71,44 @@ public class EditServlet extends HttpServlet {
 			realtor.setName(name);
 			realtor.setDescription(description);
 			rDAO.update(realtor);
-			request.getServletContext().getRequestDispatcher("/view-all.jsp?type=realtor");
+			request.getServletContext().getRequestDispatcher("/view-all.jsp?type=realtor").forward(request, response);
+			;
+		} else if (type.contentEquals("listing")) {
+
+			RealtorDAO rDAO = new RealtorDAO();
+			ListingDetailDAO lDAO = new ListingDetailDAO();
+
+			ListingDetail detail = lDAO.get(id);
+			Realtor realtor = rDAO.get(Integer.parseInt(request.getParameter("listing_agent")));
+			
+			detail.getAddress().setHouseNumber(Integer.parseInt(request.getParameter("house_num")));
+			detail.getAddress().setStreet(request.getParameter("street"));
+			detail.getAddress().setAptSuite(request.getParameter("apt_suite"));
+			detail.getAddress().setCity(request.getParameter("city"));
+			detail.getAddress().setState(request.getParameter("state"));
+			detail.getAddress().setZip(Integer.parseInt(request.getParameter("zip")));
+
+			Part filePart = request.getPart("photo");
+			InputStream fileContent = filePart.getInputStream();
+			if (fileContent.available() > 0) {
+				byte[] picture = IOUtils.toByteArray(fileContent);
+				detail.setPhoto(picture);
+			}
+
+			String price = request.getParameter("price");
+			detail.setPrice(Integer.parseInt(price));
+			
+			detail.setNumBaths(Float.parseFloat(request.getParameter("num_baths")));
+			detail.setNumBedrooms(Float.parseFloat(request.getParameter("num_beds")));
+			detail.setRealtor(realtor);
+			detail.setDescription(request.getParameter("description"));
+
+			lDAO.update(detail);
+
+			request.getServletContext().getRequestDispatcher("/view-all.jsp?type=listing").forward(request, response);
+			;
+
 		}
+
 	}
 }

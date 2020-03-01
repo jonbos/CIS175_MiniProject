@@ -57,14 +57,27 @@
 											</p></div>
 										</div>
 
-										<div class="content">
-											<p>
-												<%= request.getParameter("descr")  %>
-											</p>
-										</div>
-									</div>
+										<fmt:setLocale value="en_US" />
+										<fmt:formatNumber
+											value="${param.price}"
+											type="currency" />
+									</p>
 								</div>
 							</div>
+
+							<div class="content">
+								<p>
+									<%=request.getParameter("descr")%>
+								</p>
+							</div>
+						</div>
 					</div>
+				</div>
+			</div>
 		</div>
-	</div></body></html>
+		<a
+			href="edit.jsp?id=${param.listing_id }&type=listing"
+			class="button">Edit</a>
+	</div>
+</body>
+</html>

@@ -45,7 +45,7 @@ public class ListingDetail implements Serializable {
 	private int price;
 
 	//bi-directional many-to-one association to Address
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
 	@JoinColumn(name="adress_id")
 	private Address address;
 
