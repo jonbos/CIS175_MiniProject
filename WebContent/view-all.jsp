@@ -88,8 +88,7 @@
 											<div class="media-content">
 												<p class="title is-4">
 													<!-- Just passing the data already here to the next page -->
-													<a href="view-listing-details.jsp?listing_id=${listing.id }&address=${listing.address.getHouseNumberAndStreet() }&city=${listing.address.city }&state=${listing.address.state }&price=${listing.price}&descr=${realtor.description }"><c:out
-															value="${listing.address.getHouseNumberAndStreet() }" /></a>
+													<a href="view-listing-details.jsp?listing_id=${listing.id }&address=${listing.address.getHouseNumberAndStreet() }&city=${listing.address.city }&state=${listing.address.state }&price=${listing.price}&listing_date=${listing.created}&descr=${listing.description }"><c:out value="${listing.address.getHouseNumberAndStreet() }" /></a>
 
 												</p>
 												<p class="subtitle is-6">
@@ -99,14 +98,15 @@
 													<fmt:setLocale value="en_US" />
 													<fmt:formatNumber
 														value="${listing.price}"
-														type="currency" />
+														type="currency" /><br />
+													Listing Date: <fmt:formatDate type="both" value="${listing.created }" />	
 												</p>
 											</div>
 										</div>
 
 										<div class="content">
 											<p>
-												<c:out value="${realtor.description }" />
+												<c:out value="${listing.description }" />
 											</p>
 										</div>
 									</div>

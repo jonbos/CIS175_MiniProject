@@ -49,6 +49,7 @@
 									<%=request.getParameter("descr")%>
 								</p>
 							</div>
+
 						</div>
 					</div>
 				</div>
