@@ -98,8 +98,7 @@
 			<textarea
 				class="textarea"
 				id="description"
-				value="<c:out value='${empty listingToEdit ? "" : listingToEdit.description }' />"
-				name="description"></textarea>
+				name="description"><c:out value='${empty listingToEdit ? "" : listingToEdit.description }' /></textarea>
 		</div>
 	</div>
 	<!-- File Button -->
@@ -117,7 +116,6 @@
 		</figure>
 	</c:if>
 
-	<c:if test=""></c:if>
 	<div class="file">
 		<label class="file-label"> <input
 			class="file-input"

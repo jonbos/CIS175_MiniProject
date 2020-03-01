@@ -1,6 +1,6 @@
 
 <nav
-	class="navbar has-background-grey-lighter"
+	class="navbar is-primary"
 	role="navigation"
 	aria-label="main navigation">
 
@@ -14,32 +14,15 @@
 	</div>
 
 	<div class="navbar-menu">
-		<div class="navbar-start">
-			<div class="navbar-item has-dropdown is-hoverable">
-				<a class="navbar-link"> Add </a>
 
-				<div class="navbar-dropdown">
-					<a
-						href="/CIS175_MiniProject/add.jsp?type=listing"
-						class="navbar-item"> Add Listing </a> <a
-						href="/CIS175_MiniProject/add.jsp?type=realtor"
-						class="navbar-item"> Add Realtor Profile </a>
-				</div>
-			</div>
-			<div class="navbar-item has-dropdown is-hoverable">
-				<a class="navbar-link"> View </a>
-
-				<div class="navbar-dropdown">
-					<a
-						href="/CIS175_MiniProject/view-all.jsp?type=listing"
-						class="navbar-item"> View Listings </a> 
-						<a
-						href="/CIS175_MiniProject/view-all.jsp?type=realtor"
-						class="navbar-item"> View Realtors </a>
-				</div>
+		<div class="navbar-menu">
+			<div class="navbar-end">
+				<a
+					href="/CIS175_MiniProject/view-all.jsp?type=realtor"
+					class="navbar-item"> Realtors </a> <a
+					href="/CIS175_MiniProject/view-all.jsp?type=listing"
+					class="navbar-item"> Listings </a>
 			</div>
 		</div>
 	</div>
-
-	<div class="navbar-end"></div>
 </nav>

@@ -49,15 +49,16 @@
 									<%=request.getParameter("descr")%>
 								</p>
 							</div>
+							<a
+								href="edit.jsp?id=${param.realtor }&type=realtor"
+								class="button">Edit</a>
 
 						</div>
 					</div>
 				</div>
 			</div>
+
 		</div>
-		<a
-			href="edit.jsp?id=${param.realtor }&type=realtor"
-			class="button">Edit</a>
 
 	</div>
 </body>

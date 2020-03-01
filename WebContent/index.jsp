@@ -18,6 +18,21 @@
 <body>
 
 	<jsp:include page="header.html" />
-	
+
+	<div class="container is-three-fifths is-offset-one-fifth">
+		<div class="columns">
+			<div class="column has-text-centered">
+				<a class="is-size-1" href="/CIS175_MiniProject/view-all.jsp?type=realtor">View
+			
+					Realtors</a>
+			</div>
+			<div class="column has-text-centered">
+				<a class="is-size-1" href="/CIS175_MiniProject/view-all.jsp?type=listing">View
+					Listings</a>
+			</div>
+
+		</div>
+	</div>
+
 </body>
 </html>
