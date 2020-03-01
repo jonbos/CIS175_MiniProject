@@ -122,7 +122,14 @@ public class ListingDetail implements Serializable {
 	}
 	
 
-	
+	public Date getCreated() {
+		return created;
+	}
+
+	public void setCreated(Date created) {
+		this.created = created;
+	}
+
 	@PrePersist
 	protected void onCreate() {
 		created = new Date();

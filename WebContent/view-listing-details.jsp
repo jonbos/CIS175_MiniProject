@@ -2,12 +2,14 @@
 	language="java"
 	contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@ taglib
 	prefix="c"
 	uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib
 	prefix="fmt"
 	uri="http://java.sun.com/jsp/jstl/fmt"%>
+	
 
 <!DOCTYPE html>
 <html>
@@ -30,11 +32,11 @@
 										<figure class="image is-4by3">
 										<!-- pass the the url data back to the servlet for the image -->
 											<img
-												src="imageServlet?type=listing&id=<%
+												src='imageServlet?type=listing&amp;id=<%
  													int image_id = Integer.parseInt(request.getParameter("listing_id"));
  													out.println(image_id);
- 												%>"
-												alt="<%= request.getParameter("address")  %>" title="<%= request.getParameter("address")  %>">
+ 												%>'
+												alt='<%= request.getParameter("address")  %>' title='<%= request.getParameter("address")  %>'>
 										</figure>
 									</div>
 									<div class="card-content">
@@ -50,9 +52,9 @@
 													<fmt:setLocale value="en_US" />
 													<fmt:formatNumber
 														value="${param.price}"
-														type="currency" />
-												</p>
-											</div>
+														type="currency" /><br />
+														
+											</p></div>
 										</div>
 
 										<div class="content">
@@ -65,4 +67,4 @@
 							</div>
 					</div>
 		</div>
-	</div>
+	</div></body></html>
