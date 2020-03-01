@@ -5,17 +5,21 @@
 <fieldset>
 
 	<!-- Text input-->
-	<div class="field">
-		<label
-			class="label"
-			for="price">Asking Price</label>
+	<label
+		class="label"
+		for="prependedtext-0">Price</label>
+	<div class="field has-addons">
+		<div class="control">
+			<a class="button is-static"> $ </a>
+		</div>
 		<div class="control">
 			<input
 				id="price"
 				name="price"
 				type="text"
 				class="input "
-				required="">
+				value="<c:out value='${empty listingToEdit ? "" : listingToEdit.price }' />"
+				required>
 		</div>
 	</div>
 
@@ -29,6 +33,7 @@
 				name="num_beds"
 				type="text"
 				placeholder=""
+				value="<c:out value='${empty listingToEdit ? "" : listingToEdit.numBedrooms }' />"
 				class="input ">
 		</div>
 	</div>
@@ -43,6 +48,7 @@
 				id="num_baths"
 				name="num_baths"
 				type="text"
+				value="<c:out value='${empty listingToEdit ? "" : listingToEdit.numBaths }' />"
 				placeholder=""
 				class="input ">
 		</div>
@@ -69,8 +75,14 @@
 					<c:forEach
 						var="realtor"
 						items="${realtorDAO.getAll()}">
-						<option value="${realtor.id }"><c:out
-								value="${realtor.name }" /></option>
+						<option
+							value="${realtor.id }"
+							<c:if test="${realtor.id == listingToEdit.realtor.id }">
+							<c:out value='selected="selected'/>
+						</c:if>><c:out
+								value="${realtor.name }" />
+
+						</option>
 					</c:forEach>
 				</select>
 			</div>
@@ -86,6 +98,7 @@
 			<textarea
 				class="textarea"
 				id="description"
+				value="<c:out value='${empty listingToEdit ? "" : listingToEdit.description }' />"
 				name="description"></textarea>
 		</div>
 	</div>
@@ -94,6 +107,17 @@
 	<label
 		class="label"
 		for="photo">Photo</label>
+	<c:if test="${!empty listingToEdit }">
+		<figure class="image is-128x128">
+			<!-- pass the the url data back to the servlet for the image -->
+			<img
+				src="imageServlet?type=listing&id=${param.id }"
+				alt="${param.name }"
+				title="${param.name }">
+		</figure>
+	</c:if>
+
+	<c:if test=""></c:if>
 	<div class="file">
 		<label class="file-label"> <input
 			class="file-input"
@@ -108,6 +132,4 @@
 		</span>
 		</label>
 	</div>
-
-
 </fieldset>

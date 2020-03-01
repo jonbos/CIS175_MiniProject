@@ -40,9 +40,31 @@
 					</form>
 				</c:when>
 				<c:when test="${param.type == 'listing'}">
-			EDITING REALTOR
-			<c:out value="${param.id }">
-					</c:out>
+					<jsp:useBean
+						id="listingDAO"
+						class="controller.ListingDetailDAO" />
+					<c:set
+						var="listingToEdit"
+						scope="request"
+						value="${listingDAO.get(param.id) }" />
+					<form
+						method="post"
+						enctype="multipart/form-data"
+						action="editServlet?type=listing&id=${listingToEdit.id }">
+						<jsp:include page="address-form.jsp" />
+						<jsp:include page="listing-form.jsp" />
+						<div class="field">
+							<label
+								class="label"
+								for="submit"></label>
+							<div class="control">
+								<button
+									id="submit"
+									name="submit"
+									class="button is-info">Submit</button>
+							</div>
+						</div>
+					</form>
 				</c:when>
 			</c:choose>
 		</div>

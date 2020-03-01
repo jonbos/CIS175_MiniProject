@@ -8,6 +8,8 @@
 <%@ taglib
 	prefix="fmt"
 	uri="http://java.sun.com/jsp/jstl/fmt"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+	
 
 <!DOCTYPE html>
 <html>
@@ -54,7 +56,7 @@
 
 										<div class="content">
 											<p>
-												<c:out value="${realtor.description }" />
+												${fn:substring(realtor.description,0,50)}...
 											</p>
 										</div>
 									</div>
