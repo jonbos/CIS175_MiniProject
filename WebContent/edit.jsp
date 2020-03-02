@@ -37,6 +37,10 @@
 						enctype="multipart/form-data"
 						action="editServlet?type=realtor&id=${param.id }">
 						<jsp:include page="realtor-form.jsp" />
+						<a
+							class="button is-danger"
+							href="deleteServlet?type=realtor&id=${toEdit.id }">Delete</a>
+
 					</form>
 				</c:when>
 				<c:when test="${param.type == 'listing'}">
@@ -62,6 +66,9 @@
 									id="submit"
 									name="submit"
 									class="button is-info">Submit</button>
+								<a
+									class="button is-danger"
+									href="deleteServlet?type=listing&id=${listingToEdit.id }">Delete</a>
 							</div>
 						</div>
 					</form>

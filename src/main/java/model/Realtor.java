@@ -26,7 +26,7 @@ public class Realtor implements Serializable {
 	private byte[] picture;
 
 	//bi-directional many-to-one association to ListingDetail
-	@OneToMany(mappedBy="realtor")
+	@OneToMany(mappedBy="realtor", cascade = CascadeType.REMOVE)
 	private List<ListingDetail> listingDetails;
 
 	public Realtor() {

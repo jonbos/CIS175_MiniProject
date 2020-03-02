@@ -70,19 +70,4 @@
 		</span>
 		</label>
 	</div>
-
-
-	<!-- Button -->
-	<div class="field">
-		<label
-			class="label"
-			for="submit"></label>
-		<div class="control">
-			<button
-				id="submit"
-				name="submit"
-				class="button is-info">Submit</button>
-		</div>
-	</div>
-
 </fieldset>

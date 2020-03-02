@@ -18,46 +18,43 @@
 <body>
 	<jsp:include page="header.html" />
 	<div class="container is-three-fifths is-offset-one-fifth">
-		<div class="box">
-			<h1 class="title">
-				Viewing
-				<%=request.getParameter("name")%></h1>
-			<div class="columns is-multiline">
-				<div class="column is-one-third">
-					<div class="card">
-						<div class="card-image">
-							<figure class="image is-4by3">
-								<!-- pass the the url data back to the servlet for the image -->
-								<img
-									src="imageServlet?type=realtor&id=<%int image_id = Integer.parseInt(request.getParameter("realtor"));
+		<h1 class="title">
+			Viewing
+			<%=request.getParameter("name")%></h1>
+		<div class="columns is-multiline">
+			<div class="column is-one-third">
+				<div class="card">
+					<div class="card-image">
+						<figure class="image is-4by3">
+							<!-- pass the the url data back to the servlet for the image -->
+							<img
+								src="imageServlet?type=realtor&id=<%int image_id = Integer.parseInt(request.getParameter("realtor"));
 			out.println(image_id);%>"
-									alt="<%=request.getParameter("name")%>"
-									title="<%=request.getParameter("name")%>">
-							</figure>
-						</div>
-						<div class="card-content">
-							<div class="media">
-								<div class="media-content">
-									<p class="title is-4">
-										<%=request.getParameter("name")%>
-									</p>
-								</div>
-							</div>
-
-							<div class="content">
-								<p>
-									<%=request.getParameter("descr")%>
+								alt="<%=request.getParameter("name")%>"
+								title="<%=request.getParameter("name")%>">
+						</figure>
+					</div>
+					<div class="card-content">
+						<div class="media">
+							<div class="media-content">
+								<p class="title is-4">
+									<%=request.getParameter("name")%>
 								</p>
 							</div>
-							<a
-								href="edit.jsp?id=${param.realtor }&type=realtor"
-								class="button">Edit</a>
-
 						</div>
+
+						<div class="content">
+							<p>
+								<%=request.getParameter("descr")%>
+							</p>
+						</div>
+						<a
+							href="edit.jsp?id=${param.realtor }&type=realtor"
+							class="button">Edit</a>
+
 					</div>
 				</div>
 			</div>
-
 		</div>
 
 	</div>
