@@ -33,6 +33,17 @@
 						method="post"
 						enctype="multipart/form-data">
 						<jsp:include page="realtor-form.jsp" />
+						<div class="field">
+							<label
+								class="label"
+								for="submit"></label>
+							<div class="control">
+								<button
+									id="submit"
+									name="submit"
+									class="button is-info">Submit</button>
+							</div>
+						</div>
 					</form>
 				</c:when>
 				<c:when test="${param.type == 'listing'}">
